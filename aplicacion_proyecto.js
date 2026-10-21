@@ -1,19 +1,26 @@
 
 // APP SALARIO
 
-function salario(salario, horasExtras) {
-    return salario + (horasExtras * 9000);
+const VALOR_HORA_EXTRA = 9000;
+const LIMITE_SALARIO_ALTO = 2000000;
+
+function calcularSalario(salarioBase, horasExtras) {
+    return salarioBase + horasExtras * VALOR_HORA_EXTRA;
 }
 
-function estimarsalario(salariototal) {
-    if (salariototal >= 2000000) {
+function estimarSalario(salarioTotal) {
+    if (salarioTotal >= LIMITE_SALARIO_ALTO) {
         return "Salario alto";
     } else {
         return "Menor a 2 millones";
     }
 }
 
-let salariototal = salario(1500000, 20);
+// Pedimos los datos al usuario
+const salarioBase = Number(prompt("Escribe el salario base:"));
+const horasExtras = Number(prompt("Escribe las horas extras:"));
 
-console.log("Salario total: $" + salariototal);
-console.log(estimarsalario(salariototal));
+const salarioTotal = calcularSalario(salarioBase, horasExtras);
+
+console.log("Salario total: $" + salarioTotal);
+console.log(estimarSalario(salarioTotal));
